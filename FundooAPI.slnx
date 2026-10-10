@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="BusinessLayer/BusinessLayer.csproj" />
+  <Project Path="FundooAPI/FundooAPI.csproj" />
+  <Project Path="ModelLayer/ModelLayer.csproj" />
+  <Project Path="RepositoryLayer/RepositoryLayer.csproj" />
+</Solution>

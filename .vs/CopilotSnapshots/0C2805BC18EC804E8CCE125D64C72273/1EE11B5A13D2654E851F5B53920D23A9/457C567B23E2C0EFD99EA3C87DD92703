@@ -1,0 +1,58 @@
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using BusinessLayer.Interfaces;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using ModelLayer.DTOs;
+using ModelLayer.Entities;
+using RepositoryLayer.Interfaces;
+
+namespace BusinessLayer.Services
+{
+    public class UserBusiness : IUserBusiness
+    {
+        private readonly IUserRepository _repo;
+        private readonly IConfiguration _config;
+
+        public UserBusiness(IUserRepository repo, IConfiguration config)
+        {
+            _repo = repo;
+            _config = config;
+        }
+
+        public bool Register(RegisterDto dto)
+        {
+            if (_repo.GetByEmail(dto.Email) != null)
+                return false;
+
+            _repo.Add(new UserEntity
+            {
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                Email = dto.Email,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password)
+            });
+            return true;
+        }
+
+        public string? Login(LoginDto dto)
+        {
+            var user = _repo.GetByEmail(dto.Email);
+            if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
+                return null;
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]!));
+            var token = new JwtSecurityToken(
+                claims: new[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Email, user.Email)
+                },
+                expires: DateTime.UtcNow.AddHours(2),
+                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256));
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+    }
+}

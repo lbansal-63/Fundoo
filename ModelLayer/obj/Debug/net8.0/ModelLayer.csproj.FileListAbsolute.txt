@@ -1,0 +1,11 @@
+C:\Users\sanje\source\repos\FundooAPI\ModelLayer\bin\Debug\net8.0\ModelLayer.deps.json
+C:\Users\sanje\source\repos\FundooAPI\ModelLayer\bin\Debug\net8.0\ModelLayer.dll
+C:\Users\sanje\source\repos\FundooAPI\ModelLayer\bin\Debug\net8.0\ModelLayer.pdb
+C:\Users\sanje\source\repos\FundooAPI\ModelLayer\obj\Debug\net8.0\ModelLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sanje\source\repos\FundooAPI\ModelLayer\obj\Debug\net8.0\ModelLayer.AssemblyInfoInputs.cache
+C:\Users\sanje\source\repos\FundooAPI\ModelLayer\obj\Debug\net8.0\ModelLayer.AssemblyInfo.cs
+C:\Users\sanje\source\repos\FundooAPI\ModelLayer\obj\Debug\net8.0\ModelLayer.csproj.CoreCompileInputs.cache
+C:\Users\sanje\source\repos\FundooAPI\ModelLayer\obj\Debug\net8.0\ModelLayer.dll
+C:\Users\sanje\source\repos\FundooAPI\ModelLayer\obj\Debug\net8.0\refint\ModelLayer.dll
+C:\Users\sanje\source\repos\FundooAPI\ModelLayer\obj\Debug\net8.0\ModelLayer.pdb
+C:\Users\sanje\source\repos\FundooAPI\ModelLayer\obj\Debug\net8.0\ref\ModelLayer.dll
