@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.RateLimiting;
 using System.Text.Json.Serialization;
 using System.Text;
 using System.Threading.RateLimiting;
+using FundooAPI.ExceptionHandling;
 
 namespace FundooAPI
 {
@@ -39,6 +40,9 @@ namespace FundooAPI
             });
 
             // 2. Controllers and Swagger
+            builder.Services.AddProblemDetails();
+            builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
             builder.Services.AddControllers()
             .AddJsonOptions(o => o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
             builder.Services.AddEndpointsApiExplorer();
@@ -130,6 +134,7 @@ namespace FundooAPI
             });
 
             var app = builder.Build();
+            app.UseExceptionHandler();
 
             // 6. Swagger
             if (app.Environment.IsDevelopment())

@@ -188,8 +188,16 @@ namespace BusinessLayer.Services
         If you did not request this, ignore this email.
         """;
 
-            _email.Send(user.Email, subject, body);
-            _logger.LogInformation("AUDIT: password reset requested for user {UserId}", user.Id);
+            try
+            {
+                _email.Send(user.Email, subject, body);
+                _logger.LogInformation("AUDIT: password reset requested for user {UserId}", user.Id);
+            }
+            catch (Exception ex)
+            {
+                // Mail fail ho to bhi response same rakho, warna pata chal jayega ki email registered hai
+                _logger.LogError(ex, "Password reset email send failed for user {UserId}", user.Id);
+            }
         }
 
         public bool ResetPassword(ResetPasswordDto dto)

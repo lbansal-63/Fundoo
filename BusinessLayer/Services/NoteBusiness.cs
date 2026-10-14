@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Interfaces;
+﻿using BusinessLayer.Exceptions;
+using BusinessLayer.Interfaces;
 using Microsoft.Extensions.Logging;
 using ModelLayer.DTOs;
 using ModelLayer.Entities;
@@ -28,6 +29,13 @@ namespace BusinessLayer.Services
             IsDeleted = n.IsDeleted
         };
 
+        // Note na mile ya kisi aur user ka ho, dono me same NotFound
+        private NoteEntity GetOwnedNote(int userId, int noteId)
+        {
+            return _repo.GetById(userId, noteId)
+                ?? throw new NotFoundException("Note not found");
+        }
+
         public NoteResponseModel CreateNote(int userId, NoteCreationModel model)
         {
             var note = new NoteEntity
@@ -48,16 +56,14 @@ namespace BusinessLayer.Services
             return _repo.GetByUser(userId, view).Select(ToResponse).ToList();
         }
 
-        public NoteResponseModel? ViewNotesById(int userId, int noteId)
+        public NoteResponseModel ViewNotesById(int userId, int noteId)
         {
-            var note = _repo.GetById(userId, noteId);
-            return note == null ? null : ToResponse(note);
+            return ToResponse(GetOwnedNote(userId, noteId));
         }
 
-        public NoteResponseModel? EditNotes(int userId, EditNotesModel model)
+        public NoteResponseModel EditNotes(int userId, EditNotesModel model)
         {
-            var note = _repo.GetById(userId, model.NoteId);
-            if (note == null) return null;
+            var note = GetOwnedNote(userId, model.NoteId);
 
             note.Title = model.Title.Trim();
             note.Description = model.Description;
@@ -68,30 +74,26 @@ namespace BusinessLayer.Services
             return ToResponse(note);
         }
 
-        public bool DeleteNotes(int userId, int noteId)
+        public void DeleteNotes(int userId, int noteId)
         {
-            var note = _repo.GetById(userId, noteId);
-            if (note == null) return false;
+            var note = GetOwnedNote(userId, noteId);
 
             _repo.Delete(note);
             _logger.LogInformation("AUDIT: user {UserId} permanently deleted note {NoteId}", userId, noteId);
-            return true;
         }
 
-        public NoteResponseModel? ArchiUnarchived(int userId, int noteId)
+        public NoteResponseModel ArchiUnarchived(int userId, int noteId)
         {
-            var note = _repo.GetById(userId, noteId);
-            if (note == null) return null;
+            var note = GetOwnedNote(userId, noteId);
 
             note.IsArchived = !note.IsArchived;
             _repo.Update(note);
             return ToResponse(note);
         }
 
-        public NoteResponseModel? TrashUntrash(int userId, int noteId)
+        public NoteResponseModel TrashUntrash(int userId, int noteId)
         {
-            var note = _repo.GetById(userId, noteId);
-            if (note == null) return null;
+            var note = GetOwnedNote(userId, noteId);
 
             note.IsDeleted = !note.IsDeleted;
             _repo.Update(note);

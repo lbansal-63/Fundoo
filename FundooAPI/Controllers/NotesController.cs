@@ -47,9 +47,7 @@ namespace FundooAPI.Controllers
         {
             if (!TryGetUserId(out var userId)) return Unauthorized();
 
-            var note = _business.ViewNotesById(userId, model.NoteId);
-            if (note == null) return NotFound("Note not found");
-            return Ok(note);
+            return Ok(_business.ViewNotesById(userId, model.NoteId));
         }
 
         [HttpPut("EditNotes")]
@@ -57,9 +55,7 @@ namespace FundooAPI.Controllers
         {
             if (!TryGetUserId(out var userId)) return Unauthorized();
 
-            var note = _business.EditNotes(userId, model);
-            if (note == null) return NotFound("Note not found");
-            return Ok(note);
+            return Ok(_business.EditNotes(userId, model));
         }
 
         [HttpDelete("DeleteNotes")]
@@ -67,9 +63,8 @@ namespace FundooAPI.Controllers
         {
             if (!TryGetUserId(out var userId)) return Unauthorized();
 
-            if (!_business.DeleteNotes(userId, model.NoteId))
-                return NotFound("Note not found");
-            return Ok("Note deleted permanently");
+            _business.DeleteNotes(userId, model.NoteId);
+            return Ok("Note permanently delete ho gaya");
         }
 
         [HttpPatch("ArchiUnarchived")]
@@ -77,9 +72,7 @@ namespace FundooAPI.Controllers
         {
             if (!TryGetUserId(out var userId)) return Unauthorized();
 
-            var note = _business.ArchiUnarchived(userId, model.NoteId);
-            if (note == null) return NotFound("Note not found");
-            return Ok(note);
+            return Ok(_business.ArchiUnarchived(userId, model.NoteId));
         }
 
         [HttpPatch("TrashUntrash")]
@@ -87,9 +80,7 @@ namespace FundooAPI.Controllers
         {
             if (!TryGetUserId(out var userId)) return Unauthorized();
 
-            var note = _business.TrashUntrash(userId, model.NoteId);
-            if (note == null) return NotFound("Note not found");
-            return Ok(note);
+            return Ok(_business.TrashUntrash(userId, model.NoteId));
         }
     }
 }
