@@ -1,4 +1,3 @@
-
 using BusinessLayer.Interfaces;
 using BusinessLayer.Services;
 using BusinessLayer.Helpers;
@@ -10,7 +9,10 @@ using Microsoft.OpenApi.Models;
 using RepositoryLayer.Context;
 using RepositoryLayer.Interfaces;
 using RepositoryLayer.Services;
+using Microsoft.AspNetCore.RateLimiting;
+using System.Text.Json.Serialization;
 using System.Text;
+using System.Threading.RateLimiting;
 
 namespace FundooAPI
 {
@@ -37,7 +39,8 @@ namespace FundooAPI
             });
 
             // 2. Controllers and Swagger
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+            .AddJsonOptions(o => o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
             builder.Services.AddEndpointsApiExplorer();
 
             builder.Services.AddSwaggerGen(c =>
@@ -77,27 +80,54 @@ namespace FundooAPI
                         .GetConnectionString("Default")));
 
             // 4. Dependency Injection
+            builder.Services.AddScoped<INoteRepository, NoteRepository>();
+            builder.Services.AddScoped<INoteBusiness, NoteBusiness>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserBusiness, UserBusiness>();
             builder.Services.AddScoped<EmailHelper>();
 
             // 5. JWT Authentication
+            var jwtKey = builder.Configuration["Jwt:Key"];
+            if (string.IsNullOrWhiteSpace(jwtKey) || jwtKey.Length < 32)
+                throw new InvalidOperationException("Jwt:Key missing ya 32 chars se chhoti hai.");
+
+            var jwtIssuer = builder.Configuration["Jwt:Issuer"]
+                ?? throw new InvalidOperationException("Jwt:Issuer missing.");
+            var jwtAudience = builder.Configuration["Jwt:Audience"]
+                ?? throw new InvalidOperationException("Jwt:Audience missing.");
+
             builder.Services
-                .AddAuthentication(
-                    JwtBearerDefaults.AuthenticationScheme)
+                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    options.TokenValidationParameters =
-                        new TokenValidationParameters
-                        {
-                            ValidateIssuer = false,
-                            ValidateAudience = false,
-                            IssuerSigningKey =
-                                new SymmetricSecurityKey(
-                                    Encoding.UTF8.GetBytes(
-                                        builder.Configuration["Jwt:Key"]!))
-                        };
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = jwtIssuer,
+                        ValidateAudience = true,
+                        ValidAudience = jwtAudience,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidAlgorithms = new[] { SecurityAlgorithms.HmacSha256 },
+                        ClockSkew = TimeSpan.Zero,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+                    };
                 });
+
+            // 5b. Rate limiting
+            builder.Services.AddRateLimiter(options =>
+            {
+                options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+                options.AddPolicy("auth", httpContext =>
+                    RateLimitPartition.GetFixedWindowLimiter(
+                        httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+                        _ => new FixedWindowRateLimiterOptions
+                        {
+                            PermitLimit = 10,
+                            Window = TimeSpan.FromMinutes(1),
+                            QueueLimit = 0
+                        }));
+            });
 
             var app = builder.Build();
 
@@ -117,13 +147,16 @@ namespace FundooAPI
                         ForwardedHeaders.XForwardedProto
                 });
 
-            // 8. HTTPS Redirection
+            // 8. HTTPS Redirection (+ HSTS outside development)
+            if (!app.Environment.IsDevelopment())
+                app.UseHsts();
             app.UseHttpsRedirection();
 
             // 9. CORS Middleware
             app.UseCors("AllowReactApp");
 
-            // 10. Authentication and Authorization
+            // 10. Rate limiter, then Authentication and Authorization
+            app.UseRateLimiter();
             app.UseAuthentication();
             app.UseAuthorization();
 

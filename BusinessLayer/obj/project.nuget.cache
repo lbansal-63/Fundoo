@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nDUXdcVfM44=",
+  "dgSpecHash": "VRXkCNnT9d8=",
   "success": true,
   "projectFilePath": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\BusinessLayer.csproj",
   "expectedPackageFiles": [
@@ -37,9 +37,9 @@
     "C:\\Users\\sanje\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\sanje\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
     "C:\\Users\\sanje\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512",
-    "C:\\Users\\sanje\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.28\\microsoft.windowsdesktop.app.ref.8.0.28.nupkg.sha512",
+    "C:\\Users\\sanje\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.28\\microsoft.aspnetcore.app.ref.8.0.28.nupkg.sha512",
     "C:\\Users\\sanje\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.28\\microsoft.netcore.app.ref.8.0.28.nupkg.sha512",
-    "C:\\Users\\sanje\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.28\\microsoft.aspnetcore.app.ref.8.0.28.nupkg.sha512"
+    "C:\\Users\\sanje\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.28\\microsoft.windowsdesktop.app.ref.8.0.28.nupkg.sha512"
   ],
   "logs": []
 }

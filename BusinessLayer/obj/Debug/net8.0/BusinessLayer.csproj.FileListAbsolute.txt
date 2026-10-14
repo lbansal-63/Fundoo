@@ -15,3 +15,4 @@ C:\Users\sanje\source\repos\FundooAPI\BusinessLayer\obj\Debug\net8.0\BusinessLay
 C:\Users\sanje\source\repos\FundooAPI\BusinessLayer\obj\Debug\net8.0\refint\BusinessLayer.dll
 C:\Users\sanje\source\repos\FundooAPI\BusinessLayer\obj\Debug\net8.0\BusinessLayer.pdb
 C:\Users\sanje\source\repos\FundooAPI\BusinessLayer\obj\Debug\net8.0\ref\BusinessLayer.dll
+C:\Users\sanje\source\repos\FundooAPI\BusinessLayer\obj\Debug\net8.0\BusinessLayer.sourcelink.json

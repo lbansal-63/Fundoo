@@ -10,6 +10,7 @@
         "dependencies": {
           "BCrypt.Net-Next": "4.2.0",
           "Microsoft.Extensions.Configuration.UserSecrets": "6.0.1",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "ModelLayer": "1.0.0",
           "RepositoryLayer": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "8.23.0"

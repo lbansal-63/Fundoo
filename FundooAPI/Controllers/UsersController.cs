@@ -1,11 +1,13 @@
 ﻿using BusinessLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.DTOs;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace FundooAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [EnableRateLimiting("auth")]
     public class UsersController : ControllerBase
     {
         private readonly IUserBusiness _business;
@@ -39,12 +41,13 @@ namespace FundooAPI.Controllers
             return Ok("Agar email registered hai to mail bhej di gayi hai");
         }
 
+        
         [HttpPost("reset-password")]
         public IActionResult ResetPassword(ResetPasswordDto dto)
         {
             if (_business.ResetPassword(dto))
                 return Ok("Password reset successful");
-            return BadRequest("Email registered nahi hai");
+            return BadRequest("Invalid or expired reset token");
         }
     }
 }
