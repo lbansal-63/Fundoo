@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.DTOs;
 using Microsoft.AspNetCore.RateLimiting;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FundooAPI.Controllers
 {
@@ -41,7 +43,17 @@ namespace FundooAPI.Controllers
             return Ok("Agar email registered hai to mail bhej di gayi hai");
         }
 
-        
+        [Authorize]
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            var value = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(value, out var userId)) return Unauthorized();
+
+            _business.Logout(userId);
+            return Ok("Logged out");
+        }
+
         [HttpPost("reset-password")]
         public IActionResult ResetPassword(ResetPasswordDto dto)
         {

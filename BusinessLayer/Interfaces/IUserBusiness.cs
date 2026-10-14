@@ -13,5 +13,6 @@ namespace BusinessLayer.Interfaces
         string? Login(LoginDto dto);
         void ForgotPassword(string email);
         bool ResetPassword(ResetPasswordDto dto);
+        void Logout(int userId);
     }
 }

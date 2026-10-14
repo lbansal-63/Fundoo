@@ -15,5 +15,6 @@ namespace ModelLayer.Entities
         public string PasswordHash { get; set; } = "";
         public int FailedLoginCount { get; set; }
         public DateTime? LockoutEnd { get; set; }
+        public int TokenVersion { get; set; }
     }
 }

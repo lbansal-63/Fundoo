@@ -14,6 +14,7 @@ using System.Text.Json.Serialization;
 using System.Text;
 using System.Threading.RateLimiting;
 using FundooAPI.ExceptionHandling;
+using System.Security.Claims;
 
 namespace FundooAPI
 {
@@ -44,7 +45,7 @@ namespace FundooAPI
             builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
             builder.Services.AddControllers()
-            .AddJsonOptions(o => o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+                .AddJsonOptions(o => o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
             builder.Services.AddEndpointsApiExplorer();
 
             builder.Services.AddSwaggerGen(c =>
@@ -115,6 +116,25 @@ namespace FundooAPI
                         ValidAlgorithms = new[] { SecurityAlgorithms.HmacSha256 },
                         ClockSkew = TimeSpan.Zero,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+                    };
+
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnTokenValidated = ctx =>
+                        {
+                            var repo = ctx.HttpContext.RequestServices.GetRequiredService<IUserRepository>();
+                            var idClaim = ctx.Principal?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                            var tvClaim = ctx.Principal?.FindFirst("tv")?.Value;
+
+                            if (!int.TryParse(idClaim, out var userId)
+                                || !int.TryParse(tvClaim, out var tokenVersion)
+                                || repo.GetTokenVersion(userId) != tokenVersion)
+                            {
+                                ctx.Fail("Token revoked or invalid");
+                            }
+
+                            return Task.CompletedTask;
+                        }
                     };
                 });
 

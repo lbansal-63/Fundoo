@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using ModelLayer.Entities;
+using RepositoryLayer.Context;
+using RepositoryLayer.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ModelLayer.Entities;
-using RepositoryLayer.Context;
-using RepositoryLayer.Interfaces;
 
 namespace RepositoryLayer.Services
 {
@@ -33,6 +34,20 @@ namespace RepositoryLayer.Services
         {
             _db.Users.Update(user);
             _db.SaveChanges();
+        }
+
+        public UserEntity? GetById(int id)
+        {
+            return _db.Users.FirstOrDefault(u => u.Id == id);
+        }
+
+        public int? GetTokenVersion(int userId)
+        {
+            return _db.Users
+                .AsNoTracking()
+                .Where(u => u.Id == userId)
+                .Select(u => (int?)u.TokenVersion)
+                .FirstOrDefault();
         }
     }
 }

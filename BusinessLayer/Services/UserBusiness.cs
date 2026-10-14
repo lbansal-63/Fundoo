@@ -141,7 +141,8 @@ namespace BusinessLayer.Services
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                     new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    new Claim("tv", user.TokenVersion.ToString())
                 },
                 notBefore: DateTime.UtcNow,
                 expires: DateTime.UtcNow.AddMinutes(AccessTokenMinutes),
@@ -233,6 +234,7 @@ namespace BusinessLayer.Services
                     return false;
 
                 user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.NewPassword);
+                user.TokenVersion++;
                 user.FailedLoginCount = 0;
                 user.LockoutEnd = null;
                 _repo.Update(user);
@@ -245,6 +247,18 @@ namespace BusinessLayer.Services
                 _logger.LogWarning("AUDIT: password reset failed - invalid or expired token");
                 return false;
             }
+        }
+
+        // ---------- logout ----------
+
+        public void Logout(int userId)
+        {
+            var user = _repo.GetById(userId);
+            if (user == null) return;
+
+            user.TokenVersion++;
+            _repo.Update(user);
+            _logger.LogInformation("AUDIT: user {UserId} logged out, all tokens revoked", userId);
         }
     }
 }
