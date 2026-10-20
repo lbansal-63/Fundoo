@@ -1,9 +1,4 @@
-﻿using ModelLayer.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ModelLayer;
 
 namespace BusinessLayer.Interfaces
 {
@@ -13,6 +8,5 @@ namespace BusinessLayer.Interfaces
         string? Login(LoginDto dto);
         void ForgotPassword(string email);
         bool ResetPassword(ResetPasswordDto dto);
-        void Logout(int userId);
     }
 }

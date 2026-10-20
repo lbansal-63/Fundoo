@@ -1,12 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ModelLayer.Entities;
 using RepositoryLayer.Context;
+using RepositoryLayer.Entities;
 using RepositoryLayer.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RepositoryLayer.Services
 {

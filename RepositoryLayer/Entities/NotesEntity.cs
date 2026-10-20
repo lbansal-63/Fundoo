@@ -1,12 +1,13 @@
-﻿using System;
+﻿using RepositoryLayer.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelLayer.DTOs
+namespace RepositoryLayer.Entities
 {
-    public class NoteResponseModel
+    public class NoteEntity
     {
         public int NoteId { get; set; }
         public string Title { get; set; } = "";
@@ -14,5 +15,8 @@ namespace ModelLayer.DTOs
         public string? Colour { get; set; }
         public bool IsArchived { get; set; }
         public bool IsDeleted { get; set; }
+
+        public int UserId { get; set; }
+        public UserEntity User { get; set; } = null!;
     }
 }

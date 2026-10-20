@@ -2,8 +2,7 @@
 using BusinessLayer.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ModelLayer.DTOs;
-using ModelLayer.Models;
+using ModelLayer;
 
 namespace FundooAPI.Controllers
 {
@@ -64,7 +63,7 @@ namespace FundooAPI.Controllers
             if (!TryGetUserId(out var userId)) return Unauthorized();
 
             _business.DeleteNotes(userId, model.NoteId);
-            return Ok("Note permanently delete ho gaya");
+            return Ok("Note permanently deleted");
         }
 
         [HttpPatch("ArchiUnarchived")]

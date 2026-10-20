@@ -1,9 +1,4 @@
-﻿using ModelLayer.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RepositoryLayer.Entities;
 
 namespace RepositoryLayer.Interfaces
 {
@@ -16,5 +11,3 @@ namespace RepositoryLayer.Interfaces
         int? GetTokenVersion(int userId);
     }
 }
-
-

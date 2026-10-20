@@ -1,14 +1,13 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using BusinessLayer.Helpers;
 using BusinessLayer.Interfaces;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
-using ModelLayer.DTOs;
-using ModelLayer.Entities;
+using Middleware.Services.Cache;
+using Middleware.Services.Email;
+using Middleware.Services.Hashing;
+using Middleware.Services.Jwt;
+using ModelLayer;
+using RepositoryLayer.Entities;
 using RepositoryLayer.Interfaces;
 
 namespace BusinessLayer.Services
@@ -17,67 +16,62 @@ namespace BusinessLayer.Services
     {
         private const int MaxFailedAttempts = 5;
         private static readonly TimeSpan LockoutDuration = TimeSpan.FromMinutes(15);
+        private static readonly TimeSpan TokenVersionTtl = TimeSpan.FromMinutes(5);
 
         // "Unknown email" aur "wrong password" ka time lagbhag same rakhne ke liye
-        private static readonly string DummyHash =
-            BCrypt.Net.BCrypt.HashPassword("fundoo-dummy-password-for-timing");
+        // (ye ek valid BCrypt hash hai, kisi real user ka nahi)
+        private const string DummyHash =
+            "$2a$11$nOHN4gyDSO/gpAIjpuzjXuPaKZNsIjHz3X6iN2aeVpOZUY//tPBT2";
 
         private readonly IUserRepository _repo;
-        private readonly IConfiguration _config;
-        private readonly EmailHelper _email;
+        private readonly IJwtTokenService _jwt;
+        private readonly IEmailSender _email;
+        private readonly IPasswordHasher _hasher;
+        private readonly ICacheService _cache;
         private readonly ILogger<UserBusiness> _logger;
 
         public UserBusiness(
             IUserRepository repo,
-            IConfiguration config,
-            EmailHelper email,
+            IJwtTokenService jwt,
+            IEmailSender email,
+            IPasswordHasher hasher,
+            ICacheService cache,
             ILogger<UserBusiness> logger)
         {
             _repo = repo;
-            _config = config;
+            _jwt = jwt;
             _email = email;
+            _hasher = hasher;
+            _cache = cache;
             _logger = logger;
         }
-
-        // ---------- config helpers ----------
-
-        private SymmetricSecurityKey GetKey()
-        {
-            var keyConfig = _config["Jwt:Key"]
-                ?? throw new InvalidOperationException("Jwt:Key is missing. Set it with user-secrets or an environment variable.");
-            return new SymmetricSecurityKey(Encoding.UTF8.GetBytes(keyConfig));
-        }
-
-        private string Issuer => _config["Jwt:Issuer"]
-            ?? throw new InvalidOperationException("Jwt:Issuer is missing.");
-
-        private string AccessAudience => _config["Jwt:Audience"]
-            ?? throw new InvalidOperationException("Jwt:Audience is missing.");
-
-        // Alag audience => reset token kabhi login token ki tarah accept nahi hoga
-        private string ResetAudience => _config["Jwt:ResetAudience"]
-            ?? throw new InvalidOperationException("Jwt:ResetAudience is missing.");
-
-        private int AccessTokenMinutes =>
-            int.TryParse(_config["Jwt:AccessTokenMinutes"], out var m) && m > 0 ? m : 30;
 
         // Password badalte hi ye badal jata hai, isliye reset token sirf ek baar chalega
         private static string PasswordStamp(string passwordHash) =>
             Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(passwordHash)))[..16];
 
+        private static string NormalizeEmail(string email) => email.Trim().ToLowerInvariant();
+
+        // Token version badalte hi Redis mein naya version likh do, taaki purane tokens turant revoke ho jayein
+        private void RefreshTokenVersionCache(UserEntity user) =>
+            _cache.Set(CacheKeys.TokenVersion(user.Id), user.TokenVersion, TokenVersionTtl);
+
         // ---------- register ----------
 
         public bool Register(RegisterDto dto)
         {
-            if (_repo.GetByEmail(dto.Email) != null)
+            var email = NormalizeEmail(dto.Email);
+
+            if (_repo.GetByEmail(email) != null)
                 return false;
 
             _repo.Add(new UserEntity
             {
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
-                Email = dto.Email,
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password)
+                Email = email,
+                PhoneNumber = dto.PhoneNumber.Trim(),
+                PasswordHash = _hasher.Hash(dto.Password)
             });
 
             _logger.LogInformation("AUDIT: new user registered");
@@ -88,11 +82,11 @@ namespace BusinessLayer.Services
 
         public string? Login(LoginDto dto)
         {
-            var user = _repo.GetByEmail(dto.Email);
+            var user = _repo.GetByEmail(NormalizeEmail(dto.Email));
 
             if (user == null)
             {
-                BCrypt.Net.BCrypt.Verify(dto.Password, DummyHash); // timing similar rakhne ke liye
+                _hasher.Verify(dto.Password, DummyHash); // timing similar rakhne ke liye
                 _logger.LogWarning("AUDIT: login failed - unknown email");
                 return null;
             }
@@ -103,7 +97,7 @@ namespace BusinessLayer.Services
                 return null; // wrong password jaisa hi generic failure
             }
 
-            if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
+            if (!_hasher.Verify(dto.Password, user.PasswordHash))
             {
                 user.FailedLoginCount++;
                 if (user.FailedLoginCount >= MaxFailedAttempts)
@@ -129,52 +123,20 @@ namespace BusinessLayer.Services
             }
 
             _logger.LogInformation("AUDIT: login success for user {UserId}", user.Id);
-            return CreateAccessToken(user);
-        }
-
-        private string CreateAccessToken(UserEntity user)
-        {
-            var token = new JwtSecurityToken(
-                issuer: Issuer,
-                audience: AccessAudience,
-                claims: new[]
-                {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                    new Claim("tv", user.TokenVersion.ToString())
-                },
-                notBefore: DateTime.UtcNow,
-                expires: DateTime.UtcNow.AddMinutes(AccessTokenMinutes),
-                signingCredentials: new SigningCredentials(GetKey(), SecurityAlgorithms.HmacSha256));
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            return _jwt.CreateAccessToken(user.Id, user.Email, user.TokenVersion);
         }
 
         // ---------- forgot / reset password ----------
 
         public void ForgotPassword(string email)
         {
-            var user = _repo.GetByEmail(email);
+            var user = _repo.GetByEmail(NormalizeEmail(email));
 
             // Do not reveal whether an email is registered.
             if (user == null)
                 return;
 
-            var resetToken = new JwtSecurityToken(
-                issuer: Issuer,
-                audience: ResetAudience,
-                claims: new[]
-                {
-                    new Claim(ClaimTypes.Email, user.Email),
-                    new Claim("purpose", "reset"),
-                    new Claim("pwd", PasswordStamp(user.PasswordHash))
-                },
-                notBefore: DateTime.UtcNow,
-                expires: DateTime.UtcNow.AddMinutes(15),
-                signingCredentials: new SigningCredentials(GetKey(), SecurityAlgorithms.HmacSha256));
-
-            var token = new JwtSecurityTokenHandler().WriteToken(resetToken);
+            var token = _jwt.CreateResetToken(user.Email, PasswordStamp(user.PasswordHash));
 
             var subject = "Fundoo - Password Reset Token";
             var body = $"""
@@ -203,62 +165,32 @@ namespace BusinessLayer.Services
 
         public bool ResetPassword(ResetPasswordDto dto)
         {
-            try
-            {
-                var handler = new JwtSecurityTokenHandler();
-
-                var principal = handler.ValidateToken(dto.Token, new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidIssuer = Issuer,
-                    ValidateAudience = true,
-                    ValidAudience = ResetAudience,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidAlgorithms = new[] { SecurityAlgorithms.HmacSha256 },
-                    ClockSkew = TimeSpan.Zero,
-                    IssuerSigningKey = GetKey()
-                }, out _);
-
-                if (principal.FindFirst("purpose")?.Value != "reset")
-                    return false;
-
-                var email = principal.FindFirst(ClaimTypes.Email)?.Value;
-                if (email == null) return false;
-
-                var user = _repo.GetByEmail(email);
-                if (user == null) return false;
-
-                // Token ek hi baar chalega: password badalne ke baad stamp match nahi karega
-                if (principal.FindFirst("pwd")?.Value != PasswordStamp(user.PasswordHash))
-                    return false;
-
-                user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.NewPassword);
-                user.TokenVersion++;
-                user.FailedLoginCount = 0;
-                user.LockoutEnd = null;
-                _repo.Update(user);
-
-                _logger.LogInformation("AUDIT: password reset completed for user {UserId}", user.Id);
-                return true;
-            }
-            catch
+            var info = _jwt.ValidateResetToken(dto.Token);
+            if (info == null)
             {
                 _logger.LogWarning("AUDIT: password reset failed - invalid or expired token");
                 return false;
             }
-        }
 
-        // ---------- logout ----------
+            var user = _repo.GetByEmail(info.Email);
+            if (user == null) return false;
 
-        public void Logout(int userId)
-        {
-            var user = _repo.GetById(userId);
-            if (user == null) return;
+            // Token ek hi baar chalega: password badalne ke baad stamp match nahi karega
+            if (info.PasswordStamp != PasswordStamp(user.PasswordHash))
+            {
+                _logger.LogWarning("AUDIT: password reset failed - invalid or expired token");
+                return false;
+            }
 
-            user.TokenVersion++;
+            user.PasswordHash = _hasher.Hash(dto.NewPassword);
+            user.TokenVersion++; // reset ke baad saare purane login tokens revoke
+            user.FailedLoginCount = 0;
+            user.LockoutEnd = null;
             _repo.Update(user);
-            _logger.LogInformation("AUDIT: user {UserId} logged out, all tokens revoked", userId);
+            RefreshTokenVersionCache(user);
+
+            _logger.LogInformation("AUDIT: password reset completed for user {UserId}", user.Id);
+            return true;
         }
     }
 }

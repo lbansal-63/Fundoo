@@ -3,127 +3,63 @@
   "WorkspaceRootPath": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Migrations\\20261014062407_AddTokenVersion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RepositoryLayer\\Migrations\\20261014062407_AddTokenVersion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{792AC23D-4C34-42C8-0C5F-715E14291E02}|FundooAPI\\FundooAPI.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\fundooapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{792AC23D-4C34-42C8-0C5F-715E14291E02}|FundooAPI\\FundooAPI.csproj|solutionrelative:fundooapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0239C9A6-B7D7-D33F-C2D5-F469C95A9F18}|BusinessLayer\\BusinessLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\businesslayer\\services\\userbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0239C9A6-B7D7-D33F-C2D5-F469C95A9F18}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\userbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{792AC23D-4C34-42C8-0C5F-715E14291E02}|FundooAPI\\FundooAPI.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\fundooapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{792AC23D-4C34-42C8-0C5F-715E14291E02}|FundooAPI\\FundooAPI.csproj|solutionrelative:fundooapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0239C9A6-B7D7-D33F-C2D5-F469C95A9F18}|BusinessLayer\\BusinessLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\businesslayer\\interfaces\\iuserbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0239C9A6-B7D7-D33F-C2D5-F469C95A9F18}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\interfaces\\iuserbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{300536C2-B450-8E64-2220-A919CA12A5AE}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\repositorylayer\\services\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{300536C2-B450-8E64-2220-A919CA12A5AE}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\services\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{792AC23D-4C34-42C8-0C5F-715E14291E02}|FundooAPI\\FundooAPI.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\fundooapi\\controllers\\fundoocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{792AC23D-4C34-42C8-0C5F-715E14291E02}|FundooAPI\\FundooAPI.csproj|solutionrelative:fundooapi\\controllers\\fundoocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{300536C2-B450-8E64-2220-A919CA12A5AE}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\repositorylayer\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{300536C2-B450-8E64-2220-A919CA12A5AE}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0239C9A6-B7D7-D33F-C2D5-F469C95A9F18}|BusinessLayer\\BusinessLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\businesslayer\\businesslayer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{0239C9A6-B7D7-D33F-C2D5-F469C95A9F18}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\businesslayer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\modellayer\\entities\\userentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\userentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{792AC23D-4C34-42C8-0C5F-715E14291E02}|FundooAPI\\FundooAPI.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\fundooapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{792AC23D-4C34-42C8-0C5F-715E14291E02}|FundooAPI\\FundooAPI.csproj|solutionrelative:fundooapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FFC88B4-68D6-4CD9-9B41-F007FBFE844D}|Middleware\\Middleware.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\middleware\\middleware.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6FFC88B4-68D6-4CD9-9B41-F007FBFE844D}|Middleware\\Middleware.csproj|solutionrelative:middleware\\middleware.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FFC88B4-68D6-4CD9-9B41-F007FBFE844D}|Middleware\\Middleware.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\middleware\\services\\hashing\\bcryptpasswordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FFC88B4-68D6-4CD9-9B41-F007FBFE844D}|Middleware\\Middleware.csproj|solutionrelative:middleware\\services\\hashing\\bcryptpasswordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FFC88B4-68D6-4CD9-9B41-F007FBFE844D}|Middleware\\Middleware.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\middleware\\services\\hashing\\ipasswordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FFC88B4-68D6-4CD9-9B41-F007FBFE844D}|Middleware\\Middleware.csproj|solutionrelative:middleware\\services\\hashing\\ipasswordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0239C9A6-B7D7-D33F-C2D5-F469C95A9F18}|BusinessLayer\\BusinessLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\businesslayer\\services\\notebusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0239C9A6-B7D7-D33F-C2D5-F469C95A9F18}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\services\\notebusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{792AC23D-4C34-42C8-0C5F-715E14291E02}|FundooAPI\\FundooAPI.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\fundooapi\\controllers\\notescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{792AC23D-4C34-42C8-0C5F-715E14291E02}|FundooAPI\\FundooAPI.csproj|solutionrelative:fundooapi\\controllers\\notescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0239C9A6-B7D7-D33F-C2D5-F469C95A9F18}|BusinessLayer\\BusinessLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\businesslayer\\interfaces\\inotebusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0239C9A6-B7D7-D33F-C2D5-F469C95A9F18}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\interfaces\\inotebusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{792AC23D-4C34-42C8-0C5F-715E14291E02}|FundooAPI\\FundooAPI.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\fundooapi\\exceptionhandling\\globalexceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{792AC23D-4C34-42C8-0C5F-715E14291E02}|FundooAPI\\FundooAPI.csproj|solutionrelative:fundooapi\\exceptionhandling\\globalexceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0239C9A6-B7D7-D33F-C2D5-F469C95A9F18}|BusinessLayer\\BusinessLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\businesslayer\\exceptions\\notfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0239C9A6-B7D7-D33F-C2D5-F469C95A9F18}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\exceptions\\notfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{300536C2-B450-8E64-2220-A919CA12A5AE}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\repositorylayer\\services\\noterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{300536C2-B450-8E64-2220-A919CA12A5AE}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\services\\noterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{300536C2-B450-8E64-2220-A919CA12A5AE}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\repositorylayer\\interfaces\\inoterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{300536C2-B450-8E64-2220-A919CA12A5AE}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\interfaces\\inoterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\modellayer\\dtos\\noteresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\dtos\\noteresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{300536C2-B450-8E64-2220-A919CA12A5AE}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\repositorylayer\\context\\fundoocontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{300536C2-B450-8E64-2220-A919CA12A5AE}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\context\\fundoocontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\modellayer\\dtos\\notesidmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\dtos\\notesidmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\modellayer\\dtos\\editnotesmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\dtos\\editnotesmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\modellayer\\dtos\\notecreationmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\dtos\\notecreationmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\modellayer\\models\\noteview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\models\\noteview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\modellayer\\entities\\notesentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\notesentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{792AC23D-4C34-42C8-0C5F-715E14291E02}|FundooAPI\\FundooAPI.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\fundooapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{792AC23D-4C34-42C8-0C5F-715E14291E02}|FundooAPI\\FundooAPI.csproj|solutionrelative:fundooapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\modellayer\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FFC88B4-68D6-4CD9-9B41-F007FBFE844D}|Middleware\\Middleware.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\middleware\\services\\cache\\cacheservicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FFC88B4-68D6-4CD9-9B41-F007FBFE844D}|Middleware\\Middleware.csproj|solutionrelative:middleware\\services\\cache\\cacheservicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\modellayer\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FFC88B4-68D6-4CD9-9B41-F007FBFE844D}|Middleware\\Middleware.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\middleware\\services\\cache\\rediscacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FFC88B4-68D6-4CD9-9B41-F007FBFE844D}|Middleware\\Middleware.csproj|solutionrelative:middleware\\services\\cache\\rediscacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\modellayer\\dtos\\resetpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\dtos\\resetpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FFC88B4-68D6-4CD9-9B41-F007FBFE844D}|Middleware\\Middleware.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\middleware\\services\\cache\\cachekeys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FFC88B4-68D6-4CD9-9B41-F007FBFE844D}|Middleware\\Middleware.csproj|solutionrelative:middleware\\services\\cache\\cachekeys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\modellayer\\dtos\\forgotpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDDD0BC9-FF4F-D902-77CD-90A4E331B596}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\dtos\\forgotpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FFC88B4-68D6-4CD9-9B41-F007FBFE844D}|Middleware\\Middleware.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\middleware\\services\\cache\\icacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FFC88B4-68D6-4CD9-9B41-F007FBFE844D}|Middleware\\Middleware.csproj|solutionrelative:middleware\\services\\cache\\icacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sanje\\AppData\\Roaming\\Microsoft\\UserSecrets\\be34f061-083c-4005-8fcd-231b7e248ca5\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{300536C2-B450-8E64-2220-A919CA12A5AE}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\repositorylayer\\migrations\\fundoocontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{300536C2-B450-8E64-2220-A919CA12A5AE}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\migrations\\fundoocontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0239C9A6-B7D7-D33F-C2D5-F469C95A9F18}|BusinessLayer\\BusinessLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\businesslayer\\helpers\\emailhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0239C9A6-B7D7-D33F-C2D5-F469C95A9F18}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\helpers\\emailhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{300536C2-B450-8E64-2220-A919CA12A5AE}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\sanje\\source\\repos\\fundooapi\\repositorylayer\\migrations\\20261005063907_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{300536C2-B450-8E64-2220-A919CA12A5AE}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\migrations\\20261005063907_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -133,7 +69,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -149,106 +85,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20261014062407_AddTokenVersion.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Migrations\\20261014062407_AddTokenVersion.cs",
-              "RelativeDocumentMoniker": "RepositoryLayer\\Migrations\\20261014062407_AddTokenVersion.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Migrations\\20261014062407_AddTokenVersion.cs",
-              "RelativeToolTip": "RepositoryLayer\\Migrations\\20261014062407_AddTokenVersion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-14T06:24:07.341Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UserEntity.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\Entities\\UserEntity.cs",
-              "RelativeDocumentMoniker": "ModelLayer\\Entities\\UserEntity.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\Entities\\UserEntity.cs",
-              "RelativeToolTip": "ModelLayer\\Entities\\UserEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T05:49:56.372Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IUserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Interfaces\\IUserRepository.cs",
-              "RelativeDocumentMoniker": "RepositoryLayer\\Interfaces\\IUserRepository.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Interfaces\\IUserRepository.cs",
-              "RelativeToolTip": "RepositoryLayer\\Interfaces\\IUserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T06:10:31.11Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Services\\UserRepository.cs",
-              "RelativeDocumentMoniker": "RepositoryLayer\\Services\\UserRepository.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Services\\UserRepository.cs",
-              "RelativeToolTip": "RepositoryLayer\\Services\\UserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T06:11:20.407Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "IUserBusiness.cs",
               "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\Interfaces\\IUserBusiness.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Interfaces\\IUserBusiness.cs",
               "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\Interfaces\\IUserBusiness.cs",
               "RelativeToolTip": "BusinessLayer\\Interfaces\\IUserBusiness.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T05:50:49.59Z",
+              "WhenOpened": "2026-10-20T08:34:05.462Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "UserBusiness.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\Services\\UserBusiness.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Services\\UserBusiness.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\Services\\UserBusiness.cs",
-              "RelativeToolTip": "BusinessLayer\\Services\\UserBusiness.cs",
-              "ViewState": "AgIAAOUAAAAAAAAAAAAcwPgAAAANAAAAAAAAAA==",
+              "Title": "FundooController.cs",
+              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\FundooAPI\\Controllers\\FundooController.cs",
+              "RelativeDocumentMoniker": "FundooAPI\\Controllers\\FundooController.cs",
+              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\FundooAPI\\Controllers\\FundooController.cs",
+              "RelativeToolTip": "FundooAPI\\Controllers\\FundooController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAwwDMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T05:50:59.308Z",
+              "WhenOpened": "2026-10-20T08:33:52.573Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\FundooAPI\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "FundooAPI\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\FundooAPI\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "FundooAPI\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAcwDYAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "IPasswordHasher.cs",
+              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\Middleware\\Services\\Hashing\\IPasswordHasher.cs",
+              "RelativeDocumentMoniker": "Middleware\\Services\\Hashing\\IPasswordHasher.cs",
+              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\Middleware\\Services\\Hashing\\IPasswordHasher.cs",
+              "RelativeToolTip": "Middleware\\Services\\Hashing\\IPasswordHasher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T05:35:27.921Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\FundooAPI\\Program.cs",
-              "RelativeDocumentMoniker": "FundooAPI\\Program.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\FundooAPI\\Program.cs",
-              "RelativeToolTip": "FundooAPI\\Program.cs",
-              "ViewState": "AgIAAJ4AAAAAAAAAAAAiwKcAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T05:37:14.109Z",
+              "WhenOpened": "2026-10-20T08:17:25.404Z",
               "EditorCaption": ""
             },
             {
@@ -259,285 +130,153 @@
               "RelativeDocumentMoniker": "BusinessLayer\\Services\\NoteBusiness.cs",
               "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\Services\\NoteBusiness.cs",
               "RelativeToolTip": "BusinessLayer\\Services\\NoteBusiness.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAwwAoAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-13T18:59:20.918Z",
+              "WhenOpened": "2026-10-20T08:15:10.773Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "NotFoundException.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\Exceptions\\NotFoundException.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Exceptions\\NotFoundException.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\Exceptions\\NotFoundException.cs",
-              "RelativeToolTip": "BusinessLayer\\Exceptions\\NotFoundException.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "UserBusiness.cs",
+              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\Services\\UserBusiness.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Services\\UserBusiness.cs",
+              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\Services\\UserBusiness.cs",
+              "RelativeToolTip": "BusinessLayer\\Services\\UserBusiness.cs",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAUwMMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-14T05:15:32.444Z",
+              "WhenOpened": "2026-10-20T08:14:31.792Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "GlobalExceptionHandler.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\FundooAPI\\ExceptionHandling\\GlobalExceptionHandler.cs",
-              "RelativeDocumentMoniker": "FundooAPI\\ExceptionHandling\\GlobalExceptionHandler.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\FundooAPI\\ExceptionHandling\\GlobalExceptionHandler.cs",
-              "RelativeToolTip": "FundooAPI\\ExceptionHandling\\GlobalExceptionHandler.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAArwDMAAAAcAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\FundooAPI\\Program.cs",
+              "RelativeDocumentMoniker": "FundooAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\FundooAPI\\Program.cs",
+              "RelativeToolTip": "FundooAPI\\Program.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAUwG4AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-14T05:05:44.572Z",
+              "WhenOpened": "2026-10-20T08:12:35.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Middleware.csproj",
+              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\Middleware\\Middleware.csproj",
+              "RelativeDocumentMoniker": "Middleware\\Middleware.csproj",
+              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\Middleware\\Middleware.csproj",
+              "RelativeToolTip": "Middleware\\Middleware.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-10-19T17:25:02.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BusinessLayer.csproj",
+              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\BusinessLayer.csproj",
+              "RelativeDocumentMoniker": "BusinessLayer\\BusinessLayer.csproj",
+              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\BusinessLayer.csproj",
+              "RelativeToolTip": "BusinessLayer\\BusinessLayer.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-10-19T17:25:26.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BcryptPasswordHasher.cs",
+              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\Middleware\\Services\\Hashing\\BcryptPasswordHasher.cs",
+              "RelativeDocumentMoniker": "Middleware\\Services\\Hashing\\BcryptPasswordHasher.cs",
+              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\Middleware\\Services\\Hashing\\BcryptPasswordHasher.cs",
+              "RelativeToolTip": "Middleware\\Services\\Hashing\\BcryptPasswordHasher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T08:18:10.236Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "INoteBusiness.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\Interfaces\\INoteBusiness.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Interfaces\\INoteBusiness.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\Interfaces\\INoteBusiness.cs",
-              "RelativeToolTip": "BusinessLayer\\Interfaces\\INoteBusiness.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Title": "CacheServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\Middleware\\Services\\Cache\\CacheServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "Middleware\\Services\\Cache\\CacheServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\Middleware\\Services\\Cache\\CacheServiceCollectionExtensions.cs",
+              "RelativeToolTip": "Middleware\\Services\\Cache\\CacheServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAYwCMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-13T18:58:43.686Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "NotesController.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\FundooAPI\\Controllers\\NotesController.cs",
-              "RelativeDocumentMoniker": "FundooAPI\\Controllers\\NotesController.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\FundooAPI\\Controllers\\NotesController.cs",
-              "RelativeToolTip": "FundooAPI\\Controllers\\NotesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T09:58:27.327Z",
+              "WhenOpened": "2026-10-20T08:11:48.615Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "INoteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Interfaces\\INoteRepository.cs",
-              "RelativeDocumentMoniker": "RepositoryLayer\\Interfaces\\INoteRepository.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Interfaces\\INoteRepository.cs",
-              "RelativeToolTip": "RepositoryLayer\\Interfaces\\INoteRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAqAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "RedisCacheService.cs",
+              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\Middleware\\Services\\Cache\\RedisCacheService.cs",
+              "RelativeDocumentMoniker": "Middleware\\Services\\Cache\\RedisCacheService.cs",
+              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\Middleware\\Services\\Cache\\RedisCacheService.cs",
+              "RelativeToolTip": "Middleware\\Services\\Cache\\RedisCacheService.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwDcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-13T18:56:36.82Z",
+              "WhenOpened": "2026-10-20T08:11:21.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CacheKeys.cs",
+              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\Middleware\\Services\\Cache\\CacheKeys.cs",
+              "RelativeDocumentMoniker": "Middleware\\Services\\Cache\\CacheKeys.cs",
+              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\Middleware\\Services\\Cache\\CacheKeys.cs",
+              "RelativeToolTip": "Middleware\\Services\\Cache\\CacheKeys.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T08:10:54.031Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "NoteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Services\\NoteRepository.cs",
-              "RelativeDocumentMoniker": "RepositoryLayer\\Services\\NoteRepository.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Services\\NoteRepository.cs",
-              "RelativeToolTip": "RepositoryLayer\\Services\\NoteRepository.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwCAAAAAOAAAAAAAAAA==",
+              "Title": "ICacheService.cs",
+              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\Middleware\\Services\\Cache\\ICacheService.cs",
+              "RelativeDocumentMoniker": "Middleware\\Services\\Cache\\ICacheService.cs",
+              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\Middleware\\Services\\Cache\\ICacheService.cs",
+              "RelativeToolTip": "Middleware\\Services\\Cache\\ICacheService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-13T18:57:18.207Z",
+              "WhenOpened": "2026-10-20T08:10:22.111Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "NoteResponseModel.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\NoteResponseModel.cs",
-              "RelativeDocumentMoniker": "ModelLayer\\DTOs\\NoteResponseModel.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\NoteResponseModel.cs",
-              "RelativeToolTip": "ModelLayer\\DTOs\\NoteResponseModel.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-13T18:53:36.193Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "NotesIdModel.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\NotesIdModel.cs",
-              "RelativeDocumentMoniker": "ModelLayer\\DTOs\\NotesIdModel.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\NotesIdModel.cs",
-              "RelativeToolTip": "ModelLayer\\DTOs\\NotesIdModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-13T18:53:03.023Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "EditNotesModel.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\EditNotesModel.cs",
-              "RelativeDocumentMoniker": "ModelLayer\\DTOs\\EditNotesModel.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\EditNotesModel.cs",
-              "RelativeToolTip": "ModelLayer\\DTOs\\EditNotesModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-13T18:52:30.204Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "NoteCreationModel.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\NoteCreationModel.cs",
-              "RelativeDocumentMoniker": "ModelLayer\\DTOs\\NoteCreationModel.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\NoteCreationModel.cs",
-              "RelativeToolTip": "ModelLayer\\DTOs\\NoteCreationModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-13T18:51:24.378Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "NoteView.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\Models\\NoteView.cs",
-              "RelativeDocumentMoniker": "ModelLayer\\Models\\NoteView.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\Models\\NoteView.cs",
-              "RelativeToolTip": "ModelLayer\\Models\\NoteView.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-13T18:50:44.002Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "NotesEntity.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\Entities\\NotesEntity.cs",
-              "RelativeDocumentMoniker": "ModelLayer\\Entities\\NotesEntity.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\Entities\\NotesEntity.cs",
-              "RelativeToolTip": "ModelLayer\\Entities\\NotesEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-13T18:48:56.779Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "FundooContext.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Context\\FundooContext.cs",
-              "RelativeDocumentMoniker": "RepositoryLayer\\Context\\FundooContext.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Context\\FundooContext.cs",
-              "RelativeToolTip": "RepositoryLayer\\Context\\FundooContext.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAwwBQAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T06:09:16.014Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "RegisterDto.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\RegisterDto.cs",
-              "RelativeDocumentMoniker": "ModelLayer\\DTOs\\RegisterDto.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\RegisterDto.cs",
-              "RelativeToolTip": "ModelLayer\\DTOs\\RegisterDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T05:50:36.724Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 9,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\FundooAPI\\appsettings.json",
               "RelativeDocumentMoniker": "FundooAPI\\appsettings.json",
               "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\FundooAPI\\appsettings.json",
               "RelativeToolTip": "FundooAPI\\appsettings.json",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABsAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABMAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-10-05T06:21:28.925Z"
+              "WhenOpened": "2026-10-20T08:08:20.975Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "ResetPasswordDto.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\ResetPasswordDto.cs",
-              "RelativeDocumentMoniker": "ModelLayer\\DTOs\\ResetPasswordDto.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\ResetPasswordDto.cs",
-              "RelativeToolTip": "ModelLayer\\DTOs\\ResetPasswordDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T07:21:15.579Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "LoginDto.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\LoginDto.cs",
-              "RelativeDocumentMoniker": "ModelLayer\\DTOs\\LoginDto.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\LoginDto.cs",
-              "RelativeToolTip": "ModelLayer\\DTOs\\LoginDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T05:50:20.355Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "ForgotPasswordDto.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\ForgotPasswordDto.cs",
-              "RelativeDocumentMoniker": "ModelLayer\\DTOs\\ForgotPasswordDto.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\ModelLayer\\DTOs\\ForgotPasswordDto.cs",
-              "RelativeToolTip": "ModelLayer\\DTOs\\ForgotPasswordDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T07:20:22.661Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 14,
               "Title": "secrets.json",
               "DocumentMoniker": "C:\\Users\\sanje\\AppData\\Roaming\\Microsoft\\UserSecrets\\be34f061-083c-4005-8fcd-231b7e248ca5\\secrets.json",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Roaming\\Microsoft\\UserSecrets\\be34f061-083c-4005-8fcd-231b7e248ca5\\secrets.json",
               "ToolTip": "C:\\Users\\sanje\\AppData\\Roaming\\Microsoft\\UserSecrets\\be34f061-083c-4005-8fcd-231b7e248ca5\\secrets.json",
               "RelativeToolTip": "..\\..\\..\\AppData\\Roaming\\Microsoft\\UserSecrets\\be34f061-083c-4005-8fcd-231b7e248ca5\\secrets.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-10-07T09:05:40.74Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "FundooContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Migrations\\FundooContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "RepositoryLayer\\Migrations\\FundooContextModelSnapshot.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Migrations\\FundooContextModelSnapshot.cs",
-              "RelativeToolTip": "RepositoryLayer\\Migrations\\FundooContextModelSnapshot.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwCcAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T10:23:18.034Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "EmailHelper.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\Helpers\\EmailHelper.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Helpers\\EmailHelper.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\BusinessLayer\\Helpers\\EmailHelper.cs",
-              "RelativeToolTip": "BusinessLayer\\Helpers\\EmailHelper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T08:42:19.508Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "20261005063907_InitialCreate.cs",
-              "DocumentMoniker": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Migrations\\20261005063907_InitialCreate.cs",
-              "RelativeDocumentMoniker": "RepositoryLayer\\Migrations\\20261005063907_InitialCreate.cs",
-              "ToolTip": "C:\\Users\\sanje\\source\\repos\\FundooAPI\\RepositoryLayer\\Migrations\\20261005063907_InitialCreate.cs",
-              "RelativeToolTip": "RepositoryLayer\\Migrations\\20261005063907_InitialCreate.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAmwBgAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T06:39:08.078Z"
+              "WhenOpened": "2026-10-20T08:06:35.846Z",
+              "EditorCaption": ""
             }
           ]
         }

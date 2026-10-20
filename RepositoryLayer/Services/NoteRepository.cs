@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ModelLayer.Entities;
-using ModelLayer.Models;
+using ModelLayer;
 using RepositoryLayer.Context;
+using RepositoryLayer.Entities;
 using RepositoryLayer.Interfaces;
 
 namespace RepositoryLayer.Services

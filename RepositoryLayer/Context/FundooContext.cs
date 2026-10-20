@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ModelLayer.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RepositoryLayer.Entities;
 
 namespace RepositoryLayer.Context
 {
@@ -22,6 +17,11 @@ namespace RepositoryLayer.Context
             modelBuilder.Entity<UserEntity>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
+
+            modelBuilder.Entity<UserEntity>()
+                .Property(u => u.PhoneNumber)
+                .IsRequired()
+                .HasMaxLength(15);
 
             modelBuilder.Entity<NoteEntity>(b =>
             {

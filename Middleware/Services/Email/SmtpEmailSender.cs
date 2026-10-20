@@ -2,13 +2,13 @@
 using System.Net.Mail;
 using Microsoft.Extensions.Configuration;
 
-namespace BusinessLayer.Helpers
+namespace Middleware.Services.Email
 {
-    public class EmailHelper
+    public class SmtpEmailSender : IEmailSender
     {
         private readonly IConfiguration _config;
 
-        public EmailHelper(IConfiguration config)
+        public SmtpEmailSender(IConfiguration config)
         {
             _config = config;
         }

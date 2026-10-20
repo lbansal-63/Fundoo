@@ -1,21 +1,25 @@
-﻿using BusinessLayer.Exceptions;
-using BusinessLayer.Interfaces;
+﻿using BusinessLayer.Interfaces;
 using Microsoft.Extensions.Logging;
-using ModelLayer.DTOs;
-using ModelLayer.Entities;
-using ModelLayer.Models;
+using Middleware.ExceptionHandling;
+using Middleware.Services.Cache;
+using ModelLayer;
+using RepositoryLayer.Entities;
 using RepositoryLayer.Interfaces;
 
 namespace BusinessLayer.Services
 {
     public class NoteBusiness : INoteBusiness
     {
+        private static readonly TimeSpan NotesTtl = TimeSpan.FromMinutes(10);
+
         private readonly INoteRepository _repo;
+        private readonly ICacheService _cache;
         private readonly ILogger<NoteBusiness> _logger;
 
-        public NoteBusiness(INoteRepository repo, ILogger<NoteBusiness> logger)
+        public NoteBusiness(INoteRepository repo, ICacheService cache, ILogger<NoteBusiness> logger)
         {
             _repo = repo;
+            _cache = cache;
             _logger = logger;
         }
 
@@ -29,7 +33,13 @@ namespace BusinessLayer.Services
             IsDeleted = n.IsDeleted
         };
 
-        // Note na mile ya kisi aur user ka ho, dono me same NotFound
+        // Kisi bhi write ke baad is user ki teeno lists (Active/Archived/Trash) clear
+        private void InvalidateNotes(int userId)
+        {
+            foreach (var v in Enum.GetValues<NoteView>())
+                _cache.Remove(CacheKeys.Notes(userId, v.ToString()));
+        }
+
         private NoteEntity GetOwnedNote(int userId, int noteId)
         {
             return _repo.GetById(userId, noteId)
@@ -47,13 +57,21 @@ namespace BusinessLayer.Services
             };
 
             _repo.Add(note);
+            InvalidateNotes(userId);
             _logger.LogInformation("AUDIT: user {UserId} created note {NoteId}", userId, note.NoteId);
             return ToResponse(note);
         }
 
         public List<NoteResponseModel> ViewNotes(int userId, NoteView view)
         {
-            return _repo.GetByUser(userId, view).Select(ToResponse).ToList();
+            var key = CacheKeys.Notes(userId, view.ToString());
+
+            var cached = _cache.Get<List<NoteResponseModel>>(key);
+            if (cached != null) return cached;
+
+            var notes = _repo.GetByUser(userId, view).Select(ToResponse).ToList();
+            _cache.Set(key, notes, NotesTtl);
+            return notes;
         }
 
         public NoteResponseModel ViewNotesById(int userId, int noteId)
@@ -70,6 +88,7 @@ namespace BusinessLayer.Services
             note.Colour = model.Colour;
 
             _repo.Update(note);
+            InvalidateNotes(userId);
             _logger.LogInformation("AUDIT: user {UserId} edited note {NoteId}", userId, note.NoteId);
             return ToResponse(note);
         }
@@ -79,6 +98,7 @@ namespace BusinessLayer.Services
             var note = GetOwnedNote(userId, noteId);
 
             _repo.Delete(note);
+            InvalidateNotes(userId);
             _logger.LogInformation("AUDIT: user {UserId} permanently deleted note {NoteId}", userId, noteId);
         }
 
@@ -88,6 +108,7 @@ namespace BusinessLayer.Services
 
             note.IsArchived = !note.IsArchived;
             _repo.Update(note);
+            InvalidateNotes(userId);
             return ToResponse(note);
         }
 
@@ -97,6 +118,7 @@ namespace BusinessLayer.Services
 
             note.IsDeleted = !note.IsDeleted;
             _repo.Update(note);
+            InvalidateNotes(userId);
             return ToResponse(note);
         }
     }

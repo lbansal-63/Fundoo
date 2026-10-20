@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using BusinessLayer.Exceptions;
+using Microsoft.Extensions.Logging;
 
-namespace FundooAPI.ExceptionHandling
+namespace Middleware.ExceptionHandling
 {
     public class GlobalExceptionHandler : IExceptionHandler
     {

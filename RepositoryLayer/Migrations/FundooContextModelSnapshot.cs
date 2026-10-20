@@ -22,7 +22,7 @@ namespace RepositoryLayer.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ModelLayer.Entities.NoteEntity", b =>
+            modelBuilder.Entity("RepositoryLayer.Entities.NoteEntity", b =>
                 {
                     b.Property<int>("NoteId")
                         .ValueGeneratedOnAdd()
@@ -58,7 +58,7 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Notes");
                 });
 
-            modelBuilder.Entity("ModelLayer.Entities.UserEntity", b =>
+            modelBuilder.Entity("RepositoryLayer.Entities.UserEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,6 +88,11 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("character varying(15)");
+
                     b.Property<int>("TokenVersion")
                         .HasColumnType("integer");
 
@@ -99,9 +104,9 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ModelLayer.Entities.NoteEntity", b =>
+            modelBuilder.Entity("RepositoryLayer.Entities.NoteEntity", b =>
                 {
-                    b.HasOne("ModelLayer.Entities.UserEntity", "User")
+                    b.HasOne("RepositoryLayer.Entities.UserEntity", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -1,20 +1,18 @@
 ﻿using BusinessLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using ModelLayer.DTOs;
 using Microsoft.AspNetCore.RateLimiting;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+using ModelLayer;
 
 namespace FundooAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/Users")] // URL same rakha taaki frontend na toote; chaaho to "api/[controller]" kar do
     [EnableRateLimiting("auth")]
-    public class UsersController : ControllerBase
+    public class FundooController : ControllerBase
     {
         private readonly IUserBusiness _business;
 
-        public UsersController(IUserBusiness business)
+        public FundooController(IUserBusiness business)
         {
             _business = business;
         }
@@ -41,17 +39,6 @@ namespace FundooAPI.Controllers
         {
             _business.ForgotPassword(dto.Email);
             return Ok("Agar email registered hai to mail bhej di gayi hai");
-        }
-
-        [Authorize]
-        [HttpPost("logout")]
-        public IActionResult Logout()
-        {
-            var value = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (!int.TryParse(value, out var userId)) return Unauthorized();
-
-            _business.Logout(userId);
-            return Ok("Logged out");
         }
 
         [HttpPost("reset-password")]

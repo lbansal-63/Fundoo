@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelLayer.Entities
+namespace ModelLayer
 {
-    public class NoteEntity
+    public class NoteResponseModel
     {
         public int NoteId { get; set; }
         public string Title { get; set; } = "";
@@ -14,8 +14,5 @@ namespace ModelLayer.Entities
         public string? Colour { get; set; }
         public bool IsArchived { get; set; }
         public bool IsDeleted { get; set; }
-
-        public int UserId { get; set; }
-        public UserEntity User { get; set; } = null!;
     }
 }
