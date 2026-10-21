@@ -19,8 +19,8 @@ namespace Middleware.Services.Cache
             {
                 var options = ConfigurationOptions.Parse(connection);
                 options.AbortOnConnectFail = false; // Redis down ho tab bhi app start ho
-                options.ConnectTimeout = 2000;
-                options.SyncTimeout = 2000;
+                options.ConnectTimeout = 5000;
+                options.SyncTimeout = 3000;
 
                 services.AddStackExchangeRedisCache(o =>
                 {
