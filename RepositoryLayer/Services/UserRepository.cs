@@ -25,6 +25,11 @@ namespace RepositoryLayer.Services
             _db.SaveChanges();
         }
 
+        public UserEntity? GetByGoogleId(string googleId)
+        {
+            return _db.Users.FirstOrDefault(u => u.GoogleId == googleId);
+        }
+
         public void Update(UserEntity user)
         {
             _db.Users.Update(user);

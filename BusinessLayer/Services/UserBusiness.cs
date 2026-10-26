@@ -6,6 +6,7 @@ using Middleware.Services.Cache;
 using Middleware.Services.Email;
 using Middleware.Services.Hashing;
 using Middleware.Services.Jwt;
+using Middleware.Services.Google;
 using ModelLayer;
 using RepositoryLayer.Entities;
 using RepositoryLayer.Interfaces;
@@ -19,15 +20,16 @@ namespace BusinessLayer.Services
         private static readonly TimeSpan TokenVersionTtl = TimeSpan.FromMinutes(5);
 
         // "Unknown email" aur "wrong password" ka time lagbhag same rakhne ke liye
-        // (ye ek valid BCrypt hash hai, kisi real user ka nahi)
+        // (ye ek valid hash hai, kisi real user ka nahi)
         private const string DummyHash =
-            "$2a$11$nOHN4gyDSO/gpAIjpuzjXuPaKZNsIjHz3X6iN2aeVpOZUY//tPBT2";
+            "600000.8IIL89tZAKgP2nK6Pr+Slw==.OTGeAkhbOui5kpZ8TSnnEwT6e15Lr2SWGYBjZoQ5s7A=";
 
         private readonly IUserRepository _repo;
         private readonly IJwtTokenService _jwt;
         private readonly IEmailSender _email;
         private readonly IPasswordHasher _hasher;
         private readonly ICacheService _cache;
+        private readonly IGoogleTokenValidator _google;
         private readonly ILogger<UserBusiness> _logger;
 
         public UserBusiness(
@@ -36,6 +38,7 @@ namespace BusinessLayer.Services
             IEmailSender email,
             IPasswordHasher hasher,
             ICacheService cache,
+            IGoogleTokenValidator google,
             ILogger<UserBusiness> logger)
         {
             _repo = repo;
@@ -43,6 +46,7 @@ namespace BusinessLayer.Services
             _email = email;
             _hasher = hasher;
             _cache = cache;
+            _google = google;
             _logger = logger;
         }
 
@@ -123,6 +127,68 @@ namespace BusinessLayer.Services
             }
 
             _logger.LogInformation("AUDIT: login success for user {UserId}", user.Id);
+            return _jwt.CreateAccessToken(user.Id, user.Email, user.TokenVersion);
+        }
+
+        // ---------- google login (OAuth) ----------
+
+        public async Task<string?> GoogleLoginAsync(GoogleLoginDto dto)
+        {
+            // 1. Token Google se verify karo (signature, expiry, audience)
+            var info = await _google.ValidateAsync(dto.IdToken);
+            if (info == null)
+            {
+                _logger.LogWarning("AUDIT: google login failed - invalid token");
+                return null;
+            }
+
+            // Sirf Google-verified email par bharosa karte hain
+            if (!info.EmailVerified)
+            {
+                _logger.LogWarning("AUDIT: google login failed - email not verified by Google");
+                return null;
+            }
+
+            var email = NormalizeEmail(info.Email);
+
+            // 2. Pehle Google id se dhundo, phir email se
+            var user = _repo.GetByGoogleId(info.Subject);
+
+            if (user == null)
+            {
+                user = _repo.GetByEmail(email);
+
+                if (user == null)
+                {
+                    // Naya user. Password nahi hai (PasswordHash khali), isliye password se login nahi chalega.
+                    user = new UserEntity
+                    {
+                        FirstName = info.FirstName,
+                        LastName = info.LastName,
+                        Email = email,
+                        GoogleId = info.Subject,
+                        PasswordHash = ""
+                    };
+                    _repo.Add(user);
+                    _logger.LogInformation("AUDIT: new user {UserId} registered via google", user.Id);
+                }
+                else if (user.GoogleId != null && user.GoogleId != info.Subject)
+                {
+                    // Is email par pehle se koi aur Google account juda hai
+                    _logger.LogWarning("AUDIT: google login failed - email linked to a different google account");
+                    return null;
+                }
+                else
+                {
+                    // Pehle password se bana account, ab Google se jod do (email Google ne verify ki hai)
+                    user.GoogleId = info.Subject;
+                    _repo.Update(user);
+                    _logger.LogInformation("AUDIT: google account linked to user {UserId}", user.Id);
+                }
+            }
+
+            // 3. Apna JWT do, baaki flow (token version, Redis) pehle jaisa
+            _logger.LogInformation("AUDIT: google login success for user {UserId}", user.Id);
             return _jwt.CreateAccessToken(user.Id, user.Email, user.TokenVersion);
         }
 

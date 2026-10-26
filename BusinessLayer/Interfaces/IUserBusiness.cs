@@ -8,5 +8,6 @@ namespace BusinessLayer.Interfaces
         string? Login(LoginDto dto);
         void ForgotPassword(string email);
         bool ResetPassword(ResetPasswordDto dto);
+        Task<string?> GoogleLoginAsync(GoogleLoginDto dto);
     }
 }

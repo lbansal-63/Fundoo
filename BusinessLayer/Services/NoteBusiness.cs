@@ -1,125 +1,57 @@
 ﻿using BusinessLayer.Interfaces;
-using Microsoft.Extensions.Logging;
-using Middleware.ExceptionHandling;
-using Middleware.Services.Cache;
+using BusinessLayer.Notes.Commands;
+using BusinessLayer.Notes.Queries;
 using ModelLayer;
-using RepositoryLayer.Entities;
-using RepositoryLayer.Interfaces;
 
 namespace BusinessLayer.Services
 {
     public class NoteBusiness : INoteBusiness
     {
-        private static readonly TimeSpan NotesTtl = TimeSpan.FromMinutes(10);
+        private readonly AddNoteHandler _add;
+        private readonly EditNoteHandler _edit;
+        private readonly DeleteNoteHandler _delete;
+        private readonly ArchiveNoteHandler _archive;
+        private readonly TrashNoteHandler _trash;
+        private readonly GetNotesHandler _getNotes;
+        private readonly GetNoteByIdHandler _getById;
 
-        private readonly INoteRepository _repo;
-        private readonly ICacheService _cache;
-        private readonly ILogger<NoteBusiness> _logger;
-
-        public NoteBusiness(INoteRepository repo, ICacheService cache, ILogger<NoteBusiness> logger)
+        public NoteBusiness(
+            AddNoteHandler add,
+            EditNoteHandler edit,
+            DeleteNoteHandler delete,
+            ArchiveNoteHandler archive,
+            TrashNoteHandler trash,
+            GetNotesHandler getNotes,
+            GetNoteByIdHandler getById)
         {
-            _repo = repo;
-            _cache = cache;
-            _logger = logger;
+            _add = add;
+            _edit = edit;
+            _delete = delete;
+            _archive = archive;
+            _trash = trash;
+            _getNotes = getNotes;
+            _getById = getById;
         }
 
-        private static NoteResponseModel ToResponse(NoteEntity n) => new()
-        {
-            NoteId = n.NoteId,
-            Title = n.Title,
-            Description = n.Description,
-            Colour = n.Colour,
-            IsArchived = n.IsArchived,
-            IsDeleted = n.IsDeleted
-        };
+        public NoteResponseModel CreateNote(int userId, NoteCreationModel model) =>
+            _add.Handle(new AddNoteCommand(userId, model.Title, model.Description, model.Colour));
 
-        // Kisi bhi write ke baad is user ki teeno lists (Active/Archived/Trash) clear
-        private void InvalidateNotes(int userId)
-        {
-            foreach (var v in Enum.GetValues<NoteView>())
-                _cache.Remove(CacheKeys.Notes(userId, v.ToString()));
-        }
+        public List<NoteResponseModel> ViewNotes(int userId, NoteView view) =>
+            _getNotes.Handle(new GetNotesQuery(userId, view));
 
-        private NoteEntity GetOwnedNote(int userId, int noteId)
-        {
-            return _repo.GetById(userId, noteId)
-                ?? throw new NotFoundException("Note not found");
-        }
+        public NoteResponseModel ViewNotesById(int userId, int noteId) =>
+            _getById.Handle(new GetNoteByIdQuery(userId, noteId));
 
-        public NoteResponseModel CreateNote(int userId, NoteCreationModel model)
-        {
-            var note = new NoteEntity
-            {
-                Title = model.Title.Trim(),
-                Description = model.Description,
-                Colour = model.Colour,
-                UserId = userId
-            };
+        public NoteResponseModel EditNotes(int userId, EditNotesModel model) =>
+            _edit.Handle(new EditNoteCommand(userId, model.NoteId, model.Title, model.Description, model.Colour));
 
-            _repo.Add(note);
-            InvalidateNotes(userId);
-            _logger.LogInformation("AUDIT: user {UserId} created note {NoteId}", userId, note.NoteId);
-            return ToResponse(note);
-        }
+        public void DeleteNotes(int userId, int noteId) =>
+            _delete.Handle(new DeleteNoteCommand(userId, noteId));
 
-        public List<NoteResponseModel> ViewNotes(int userId, NoteView view)
-        {
-            var key = CacheKeys.Notes(userId, view.ToString());
+        public NoteResponseModel ArchiUnarchived(int userId, int noteId) =>
+            _archive.Handle(new ArchiveNoteCommand(userId, noteId));
 
-            var cached = _cache.Get<List<NoteResponseModel>>(key);
-            if (cached != null) return cached;
-
-            var notes = _repo.GetByUser(userId, view).Select(ToResponse).ToList();
-            _cache.Set(key, notes, NotesTtl);
-            return notes;
-        }
-
-        public NoteResponseModel ViewNotesById(int userId, int noteId)
-        {
-            return ToResponse(GetOwnedNote(userId, noteId));
-        }
-
-        public NoteResponseModel EditNotes(int userId, EditNotesModel model)
-        {
-            var note = GetOwnedNote(userId, model.NoteId);
-
-            note.Title = model.Title.Trim();
-            note.Description = model.Description;
-            note.Colour = model.Colour;
-
-            _repo.Update(note);
-            InvalidateNotes(userId);
-            _logger.LogInformation("AUDIT: user {UserId} edited note {NoteId}", userId, note.NoteId);
-            return ToResponse(note);
-        }
-
-        public void DeleteNotes(int userId, int noteId)
-        {
-            var note = GetOwnedNote(userId, noteId);
-
-            _repo.Delete(note);
-            InvalidateNotes(userId);
-            _logger.LogInformation("AUDIT: user {UserId} permanently deleted note {NoteId}", userId, noteId);
-        }
-
-        public NoteResponseModel ArchiUnarchived(int userId, int noteId)
-        {
-            var note = GetOwnedNote(userId, noteId);
-
-            note.IsArchived = !note.IsArchived;
-            _repo.Update(note);
-            InvalidateNotes(userId);
-            return ToResponse(note);
-        }
-
-        public NoteResponseModel TrashUntrash(int userId, int noteId)
-        {
-            var note = GetOwnedNote(userId, noteId);
-
-            note.IsDeleted = !note.IsDeleted;
-            _repo.Update(note);
-            InvalidateNotes(userId);
-            return ToResponse(note);
-        }
+        public NoteResponseModel TrashUntrash(int userId, int noteId) =>
+            _trash.Handle(new TrashNoteCommand(userId, noteId));
     }
 }

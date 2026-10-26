@@ -34,6 +34,15 @@ namespace FundooAPI.Controllers
             return Ok(new { token });
         }
 
+        [HttpPost("google-login")]
+        public async Task<IActionResult> GoogleLogin(GoogleLoginDto dto)
+        {
+            var token = await _business.GoogleLoginAsync(dto);
+            if (token == null)
+                return Unauthorized("Invalid Google token");
+            return Ok(new { token });
+        }
+
         [HttpPost("forgot-password")]
         public IActionResult ForgotPassword(ForgotPasswordDto dto)
         {

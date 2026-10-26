@@ -20,7 +20,11 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.RateLimiting;
-
+using BusinessLayer.User.Queries;
+using BusinessLayer.User.Commands;
+using BusinessLayer.Notes.Commands;
+using BusinessLayer.Notes.Queries;
+using Middleware.Services.Google;
 
 namespace FundooAPI
 {
@@ -117,7 +121,21 @@ namespace FundooAPI
             builder.Services.AddScoped<IUserBusiness, UserBusiness>();
             builder.Services.AddScoped<IEmailSender, SmtpEmailSender>();
             builder.Services.AddSingleton<IJwtTokenService, JwtTokenService>();
-            builder.Services.AddSingleton<IPasswordHasher, BcryptPasswordHasher>();
+            builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
+            builder.Services.AddSingleton<IGoogleTokenValidator, GoogleTokenValidator>();
+            builder.Services.AddScoped<IUserBusiness, UserBusiness>();
+            builder.Services.AddScoped<LoginUserHandler>();
+            builder.Services.AddScoped<RegisterUserHandler>();
+            builder.Services.AddScoped<ForgotPasswordHandler>();
+            builder.Services.AddScoped<ResetPasswordHandler>(); 
+            builder.Services.AddScoped<AddNoteHandler>();
+            builder.Services.AddScoped<EditNoteHandler>();
+            builder.Services.AddScoped<DeleteNoteHandler>();
+            builder.Services.AddScoped<ArchiveNoteHandler>();
+            builder.Services.AddScoped<TrashNoteHandler>();
+            builder.Services.AddScoped<GetNotesHandler>();
+            builder.Services.AddScoped<GetNoteByIdHandler>();
+
 
             // 4b. Caching (Redis ya in-memory, Redis:ConnectionString ke hisaab se)
             builder.Services.AddAppCaching(builder.Configuration);

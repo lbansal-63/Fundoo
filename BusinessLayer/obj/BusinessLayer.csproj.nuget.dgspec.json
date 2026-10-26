@@ -153,9 +153,9 @@
           "framework": "net8.0",
           "targetAlias": "net8.0",
           "dependencies": {
-            "BCrypt.Net-Next": {
+            "Google.Apis.Auth": {
               "target": "Package",
-              "version": "[4.2.0, )"
+              "version": "[1.68.0, )"
             },
             "Microsoft.Extensions.Caching.StackExchangeRedis": {
               "target": "Package",

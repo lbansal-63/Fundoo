@@ -17,6 +17,13 @@ namespace RepositoryLayer.Context
             modelBuilder.Entity<UserEntity>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
+            modelBuilder.Entity<UserEntity>()
+                .Property(u => u.GoogleId)
+                .HasMaxLength(255);
+
+            modelBuilder.Entity<UserEntity>()
+                .HasIndex(u => u.GoogleId)
+                .IsUnique();
 
             modelBuilder.Entity<UserEntity>()
                 .Property(u => u.PhoneNumber)
