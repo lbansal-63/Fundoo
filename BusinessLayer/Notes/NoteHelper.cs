@@ -2,6 +2,7 @@
 using Middleware.Services.Cache;
 using ModelLayer;
 using RepositoryLayer.Entities;
+using BusinessLayer.Labels;
 using RepositoryLayer.Interfaces;
 
 namespace BusinessLayer.Notes
@@ -15,7 +16,13 @@ namespace BusinessLayer.Notes
             Description = n.Description,
             Colour = n.Colour,
             IsArchived = n.IsArchived,
-            IsDeleted = n.IsDeleted
+            IsDeleted = n.IsDeleted,
+            Labels = n.NoteLabels
+                .Where(nl => nl.Label != null)
+                .Select(nl => nl.Label)
+                .OrderBy(l => l.NormalizedName)
+                .Select(LabelMapper.ToResponse)
+                .ToList()
         };
 
         // Note na mile ya kisi aur user ka ho, dono me same NotFound

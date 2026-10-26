@@ -81,5 +81,25 @@ namespace FundooAPI.Controllers
 
             return Ok(_business.TrashUntrash(userId, model.NoteId));
         }
+
+        // PUT /api/notes/{noteId}/labels/{labelId}
+        [HttpPut("{noteId:int:min(1)}/labels/{labelId:int:min(1)}")]
+        public IActionResult AttachLabel(int noteId, int labelId)
+        {
+            if (!TryGetUserId(out var userId)) return Unauthorized();
+
+            _business.AttachLabel(userId, noteId, labelId);
+            return NoContent();
+        }
+
+        // DELETE /api/notes/{noteId}/labels/{labelId}
+        [HttpDelete("{noteId:int:min(1)}/labels/{labelId:int:min(1)}")]
+        public IActionResult RemoveLabel(int noteId, int labelId)
+        {
+            if (!TryGetUserId(out var userId)) return Unauthorized();
+
+            _business.RemoveLabel(userId, noteId, labelId);
+            return NoContent();
+        }
     }
 }

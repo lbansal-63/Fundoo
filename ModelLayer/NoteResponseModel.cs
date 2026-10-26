@@ -14,5 +14,6 @@ namespace ModelLayer
         public string? Colour { get; set; }
         public bool IsArchived { get; set; }
         public bool IsDeleted { get; set; }
+        public List<LabelResponseModel> Labels { get; set; } = new();
     }
 }

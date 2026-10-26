@@ -25,6 +25,9 @@ using BusinessLayer.User.Commands;
 using BusinessLayer.Notes.Commands;
 using BusinessLayer.Notes.Queries;
 using Middleware.Services.Google;
+using BusinessLayer.Labels.Commands;
+using BusinessLayer.Labels.Queries;
+using BusinessLayer.Labels.Validators;
 
 namespace FundooAPI
 {
@@ -135,6 +138,17 @@ namespace FundooAPI
             builder.Services.AddScoped<TrashNoteHandler>();
             builder.Services.AddScoped<GetNotesHandler>();
             builder.Services.AddScoped<GetNoteByIdHandler>();
+            builder.Services.AddScoped<ILabelRepository, LabelRepository>();
+            builder.Services.AddScoped<ILabelService, LabelService>();
+            builder.Services.AddScoped<ILabelBusiness, LabelBusiness>();
+            builder.Services.AddScoped<CreateLabelCommandValidator>();
+            builder.Services.AddScoped<RenameLabelCommandValidator>();
+            builder.Services.AddScoped<CreateLabelHandler>();
+            builder.Services.AddScoped<RenameLabelHandler>();
+            builder.Services.AddScoped<DeleteLabelHandler>();
+            builder.Services.AddScoped<GetLabelsHandler>();
+            builder.Services.AddScoped<AttachLabelToNoteHandler>();
+            builder.Services.AddScoped<RemoveLabelFromNoteHandler>();
 
 
             // 4b. Caching (Redis ya in-memory, Redis:ConnectionString ke hisaab se)

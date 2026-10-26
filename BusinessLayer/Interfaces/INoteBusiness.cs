@@ -11,5 +11,7 @@ namespace BusinessLayer.Interfaces
         void DeleteNotes(int userId, int noteId);
         NoteResponseModel ArchiUnarchived(int userId, int noteId);
         NoteResponseModel TrashUntrash(int userId, int noteId);
+        void AttachLabel(int userId, int noteId, int labelId);
+        void RemoveLabel(int userId, int noteId, int labelId);
     }
 }

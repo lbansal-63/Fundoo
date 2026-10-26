@@ -2,6 +2,7 @@
 using BusinessLayer.Notes.Commands;
 using BusinessLayer.Notes.Queries;
 using ModelLayer;
+using BusinessLayer.Labels.Commands;
 
 namespace BusinessLayer.Services
 {
@@ -14,6 +15,8 @@ namespace BusinessLayer.Services
         private readonly TrashNoteHandler _trash;
         private readonly GetNotesHandler _getNotes;
         private readonly GetNoteByIdHandler _getById;
+        private readonly AttachLabelToNoteHandler _attachLabel;
+        private readonly RemoveLabelFromNoteHandler _removeLabel;
 
         public NoteBusiness(
             AddNoteHandler add,
@@ -22,7 +25,9 @@ namespace BusinessLayer.Services
             ArchiveNoteHandler archive,
             TrashNoteHandler trash,
             GetNotesHandler getNotes,
-            GetNoteByIdHandler getById)
+            GetNoteByIdHandler getById,
+            AttachLabelToNoteHandler attachLabel,
+            RemoveLabelFromNoteHandler removeLabel)
         {
             _add = add;
             _edit = edit;
@@ -31,6 +36,8 @@ namespace BusinessLayer.Services
             _trash = trash;
             _getNotes = getNotes;
             _getById = getById;
+            _attachLabel = attachLabel;
+            _removeLabel = removeLabel;
         }
 
         public NoteResponseModel CreateNote(int userId, NoteCreationModel model) =>
@@ -53,5 +60,11 @@ namespace BusinessLayer.Services
 
         public NoteResponseModel TrashUntrash(int userId, int noteId) =>
             _trash.Handle(new TrashNoteCommand(userId, noteId));
+
+        public void AttachLabel(int userId, int noteId, int labelId) =>
+    _attachLabel.Handle(new AttachLabelToNoteCommand(userId, noteId, labelId));
+
+        public void RemoveLabel(int userId, int noteId, int labelId) =>
+            _removeLabel.Handle(new RemoveLabelFromNoteCommand(userId, noteId, labelId));
     }
 }

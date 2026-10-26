@@ -25,7 +25,9 @@ namespace Middleware.ExceptionHandling
         {
             var (status, title) = exception switch
             {
+                RequestValidationException => (StatusCodes.Status400BadRequest, "Bad request"),
                 NotFoundException => (StatusCodes.Status404NotFound, "Not found"),
+                ConflictException => (StatusCodes.Status409Conflict, "Conflict"),
                 BadHttpRequestException bre => (bre.StatusCode, "Bad request"),
                 UnauthorizedAccessException => (StatusCodes.Status401Unauthorized, "Unauthorized"),
                 _ => (StatusCodes.Status500InternalServerError, "Server error")
@@ -40,6 +42,12 @@ namespace Middleware.ExceptionHandling
 
             httpContext.Response.StatusCode = status;
 
+            // Hamari apni exceptions ke messages safe hain (hum khud likhte hain), client ko dikhate hain.
+            // 500 me exception ka message/stack trace client ko kabhi nahi jaata.
+            var isOwnException = exception is NotFoundException
+                or ConflictException
+                or RequestValidationException;
+
             return await _problemDetails.TryWriteAsync(new ProblemDetailsContext
             {
                 HttpContext = httpContext,
@@ -48,9 +56,7 @@ namespace Middleware.ExceptionHandling
                 {
                     Status = status,
                     Title = title,
-                    // NotFoundException ka message safe hai (hum khud likhte hain), isliye dikhate hain.
-                    // 500 me exception ka message/stack trace client ko kabhi nahi jaata.
-                    Detail = exception is NotFoundException
+                    Detail = isOwnException
                         ? exception.Message
                         : status >= 500 ? "Something went wrong, Try again later!!" : null
                 }

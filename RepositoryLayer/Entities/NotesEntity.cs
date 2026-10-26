@@ -18,5 +18,7 @@ namespace RepositoryLayer.Entities
 
         public int UserId { get; set; }
         public UserEntity User { get; set; } = null!;
+
+        public ICollection<NoteLabelEntity> NoteLabels { get; set; } = new List<NoteLabelEntity>();
     }
 }

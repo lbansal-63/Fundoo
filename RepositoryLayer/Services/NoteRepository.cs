@@ -23,7 +23,11 @@ namespace RepositoryLayer.Services
 
         public List<NoteEntity> GetByUser(int userId, NoteView view)
         {
-            var query = _db.Notes.AsNoTracking().Where(n => n.UserId == userId);
+            var query = _db.Notes
+                .AsNoTracking()
+                .Include(n => n.NoteLabels)
+                    .ThenInclude(nl => nl.Label)
+                .Where(n => n.UserId == userId);
 
             query = view switch
             {
@@ -37,12 +41,15 @@ namespace RepositoryLayer.Services
 
         public NoteEntity? GetById(int userId, int noteId)
         {
-            return _db.Notes.FirstOrDefault(n => n.NoteId == noteId && n.UserId == userId);
+            return _db.Notes
+                .Include(n => n.NoteLabels)
+                    .ThenInclude(nl => nl.Label)
+                .FirstOrDefault(n => n.NoteId == noteId && n.UserId == userId);
         }
 
         public void Update(NoteEntity note)
         {
-            _db.Notes.Update(note);
+            _db.Entry(note).State = EntityState.Modified;
             _db.SaveChanges();
         }
 
