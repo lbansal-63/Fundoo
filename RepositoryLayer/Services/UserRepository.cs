@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ModelLayer.Entities;
+﻿using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.Context;
+using RepositoryLayer.Entities;
 using RepositoryLayer.Interfaces;
 
 namespace RepositoryLayer.Services
@@ -29,10 +25,29 @@ namespace RepositoryLayer.Services
             _db.SaveChanges();
         }
 
+        public UserEntity? GetByGoogleId(string googleId)
+        {
+            return _db.Users.FirstOrDefault(u => u.GoogleId == googleId);
+        }
+
         public void Update(UserEntity user)
         {
             _db.Users.Update(user);
             _db.SaveChanges();
+        }
+
+        public UserEntity? GetById(int id)
+        {
+            return _db.Users.FirstOrDefault(u => u.Id == id);
+        }
+
+        public int? GetTokenVersion(int userId)
+        {
+            return _db.Users
+                .AsNoTracking()
+                .Where(u => u.Id == userId)
+                .Select(u => (int?)u.TokenVersion)
+                .FirstOrDefault();
         }
     }
 }

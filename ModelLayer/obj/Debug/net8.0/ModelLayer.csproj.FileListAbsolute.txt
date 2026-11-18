@@ -9,3 +9,4 @@ C:\Users\sanje\source\repos\FundooAPI\ModelLayer\obj\Debug\net8.0\ModelLayer.dll
 C:\Users\sanje\source\repos\FundooAPI\ModelLayer\obj\Debug\net8.0\refint\ModelLayer.dll
 C:\Users\sanje\source\repos\FundooAPI\ModelLayer\obj\Debug\net8.0\ModelLayer.pdb
 C:\Users\sanje\source\repos\FundooAPI\ModelLayer\obj\Debug\net8.0\ref\ModelLayer.dll
+C:\Users\sanje\source\repos\FundooAPI\ModelLayer\obj\Debug\net8.0\ModelLayer.sourcelink.json

@@ -1,0 +1,61 @@
+﻿using BusinessLayer.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
+using ModelLayer;
+
+namespace FundooAPI.Controllers
+{
+    [ApiController]
+    [Route("api/Users")] // URL same rakha taaki frontend na toote; chaaho to "api/[controller]" kar do
+    [EnableRateLimiting("auth")]
+    public class FundooController : ControllerBase
+    {
+        private readonly IUserBusiness _business;
+
+        public FundooController(IUserBusiness business)
+        {
+            _business = business;
+        }
+
+        [HttpPost("register")]
+        public IActionResult Register(RegisterDto dto)
+        {
+            if (_business.Register(dto))
+                return Ok("Registered successfully");
+            return Conflict("Email already registered");
+        }
+
+        [HttpPost("login")]
+        public IActionResult Login(LoginDto dto)
+        {
+            var token = _business.Login(dto);
+            if (token == null)
+                return Unauthorized("Invalid email or password");
+            return Ok(new { token });
+        }
+
+        [HttpPost("google-login")]
+        public async Task<IActionResult> GoogleLogin(GoogleLoginDto dto)
+        {
+            var token = await _business.GoogleLoginAsync(dto);
+            if (token == null)
+                return Unauthorized("Invalid Google token");
+            return Ok(new { token });
+        }
+
+        [HttpPost("forgot-password")]
+        public IActionResult ForgotPassword(ForgotPasswordDto dto)
+        {
+            _business.ForgotPassword(dto.Email);
+            return Ok("Agar email registered hai to mail bhej di gayi hai");
+        }
+
+        [HttpPost("reset-password")]
+        public IActionResult ResetPassword(ResetPasswordDto dto)
+        {
+            if (_business.ResetPassword(dto))
+                return Ok("Password reset successful");
+            return BadRequest("Invalid or expired reset token");
+        }
+    }
+}
